@@ -1,0 +1,21 @@
+Package: roadworksUK
+Type: Package
+Title: Accessing Processing and Visualising Data on UK Roadworks
+Version: 0.1.0.9000
+Authors@R: c(
+    person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0001-5679-6536")),
+    person("Malcolm", "Morgan", role = c("ctb"))
+    )
+Maintainer: The package maintainer <rob00x@gmail.com>
+Description: The goal of roadworksUK is to enable you to access, process and visualise data on UK roadworks,
+  particularly Electronic Transfer of Notifications (EToN) records.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.0)
+RoxygenNote: 6.1.0
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
