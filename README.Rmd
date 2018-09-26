@@ -27,9 +27,9 @@ install.packages("roadworksUK")
 
 Install the package hosted on [GitHub](https://github.com/) with:
 
-```r
+```{r, message=FALSE}
 # install.packages("devtools")
-devtools::install_github("robinlovelace/roadworksUK")
+devtools::install_github("ITSLeeds/roadworksUK")
 ```
 
 Load the package with:
