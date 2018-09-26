@@ -77,3 +77,99 @@ ncol(htdd_example)
 nrow(htdd_example) # a small dataset with 10 rows
 #> [1] 10
 ```
+
+## A quick example: common roadworks in Ashford
+
+A good way to ‘get the measure’ of potentially large spatio-temporal
+datasets is to find their size (in MB/GB/TB and number of rows/columns)
+and their temporal extent (we’ll plot its spatial extent soon). We can
+find all of these things for the `htdd_ashford` dataset as follows:
+
+``` r
+pryr::object_size(htdd_ashford) # less than 2 MB - good test dataset
+#> 1.65 MB
+nrow(htdd_ashford)
+#> [1] 981
+ncol(htdd_ashford)
+#> [1] 90
+range(htdd_ashford$e__date_created)
+#> [1] "2018-01-31 13:35:31 UTC" "2018-07-26 09:33:05 UTC"
+```
+
+The following commands can find-out who reports road works in Ashford,
+using the **tidyverse** package:
+
+``` r
+library(tidyverse)
+htdd_ashford %>% 
+  group_by(publisher_name) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n))
+#> # A tibble: 2 x 2
+#>   publisher_name          n
+#>   <chr>               <int>
+#> 1 Kent County Council   975
+#> 2 Highways England        6
+```
+
+It’s mostly Kenty County Council. There are a handful of reports by HE
+in the region also. Find out who does the work with the following
+commands (this finds the top 5 organisations, change then `n` parameter
+to see more organisations):
+
+``` r
+htdd_ashford %>% 
+  group_by(responsible_org_name) %>% 
+  summarise(n = n()) %>% 
+  arrange(desc(n)) %>% 
+  top_n(n = 5, wt = n)
+#> # A tibble: 5 x 2
+#>   responsible_org_name                n
+#>   <chr>                           <int>
+#> 1 KENT COUNTY COUNCIL               528
+#> 2 South East Water                  273
+#> 3 BT                                 47
+#> 4 UK POWER NETWORKS SOUTH EASTERN    38
+#> 5 SOUTHERN GAS NETWORKS              24
+```
+
+Let’s take a look at the temporal distribution of roadworks in the
+example dataset:
+
+``` r
+plot(htdd_ashford$e__date_created, htdd_ashford$e__duration_days)
+```
+
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+
+This distribution is characteristic of roadworks data: it’s not usually
+logged when it begins but after it ends. A log of actual reporting dates
+is illustrated in the next plot:
+
+``` r
+plot(htdd_ashford$e__date_updated, htdd_ashford$e__duration_days)
+```
+
+<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+
+This shows the log comes from a single month (June) in 2018. We can do
+more sophisticated plots building on these examples and using packages
+such as **ggplot2**. For now, we will move on to plot the spatial extent
+of the object:
+
+``` r
+library(tmap)
+tmap_mode("view")
+#> tmap mode set to interactive viewing
+tm_basemap(server = leaflet::providers$OpenTopoMap) +
+  qtm(htdd_ashford$i__location_point)
+#> Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 4.9.3
+```
+
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+
+``` r
+library(tidyverse)
+htdd_small = htdd_ashford %>% 
+  select(description)
+```
