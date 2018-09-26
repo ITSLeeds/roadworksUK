@@ -1,0 +1,102 @@
+---
+title: "RoadworksUK"
+author: "Robin Lovelace and Malcolm Morgan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+# output: rmarkdown::word_document
+bibliography: references.bib
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Glossary
+
+- Fixed Penalty Notice (FPN):
+- New Roads and Street Works Act 1991 ([NRSWA](http://www.legislation.gov.uk/ukpga/1991/22/contents)): Legislation empowering LHAs to inspect the work of undertakers that impact public roads.
+<!-- todo: check -->
+- Reactive vs collaborative: reactive projects are ones that are unplanned, collaborative projects are planned. There is also a question of timescales of fixing - urgent or standard and major activities. Urgent activities have the greatest impact
+- Roadworks:
+- Streetworks: 
+- Traffic Management type (TM type): how the LHA manages traffic around road works, including traffic lights
+- Undertaker: The entity undertaking the roadworks
+
+
+
+# Introduction
+
+Roadworks and streetworks (which we collectively refer to as roadworks for simplicity in this report, see glossary) are an understudied yet vital part of the transport system.
+Without them roads and associated pavements and other structures would gradually fall into a state of disrepair damaging to all road users.
+Although only a small fraction of roadworks are for road users,
+<!-- (xx% as revealed subseqently in the report) -->
+it is worth seeing the evidence of the disruption they cause in the wider context of the need for work to be done to keep transport and other key systems working for the benefit of all in society.
+
+Lane rental has been in operation since 2013 in London and Kent
+
+A government commissioned report evaluated the effectiveness of permit schemes which found that "LHAs with permit schemes reported that they have increased control of the road network" [@ecorys_evaluation_2017].
+
+
+
+Three levels of regulation:
+
+- Noticing: This is a statutary requirement that demands undertakers to inform the LHA that works will be undertaken.
+- Permiting
+- Lane rental: provides an additional layer of control, so far only implemented in London and Kent and only affecting a small fraction (~5% by length) of roads by length.
+
+# Input roadworks data
+
+The EtON specification is set-out in [@highwayauthoritiesandutilitiescommittee_technical_2013].
+The specification is clear but there are many ways to interpret it and there seems to be no standard file format for exchanging data at the level of individual roadworks, the starting point for many roadworks analysis projects.
+
+An example of this type of data is provided in `htdd_ashford`, a dataset representing all roadworks in Leeds in the 4^th^ quarter of 2017.
+As illustrated in the code chunk below it contains 16,000 rows and 24 columns, and is available when the package is loaded:
+
+```{r}
+library(roadworksUK)
+nrow(htdd_ashford)
+ncol(htdd_ashford)
+names(htdd_ashford)
+```
+
+
+# Descriptive analysis of roadworks data
+
+# Road traffic data
+
+# Discussion and next steps
+
+This project has demonstrated how the 'barrier to entry' to the complex world of roadworks data can be reduced with modern open source software.
+Like the **oneminutetrafficdata** project [@hudlass-galley_oneminutetrafficdata_2017], it has resulted not only in a write-up, but also software in the form of an R package.
+Getting the data into a statistical analysis environment will the data more accessible to stakeholders, with the potential to inform policies and operations around roadworks.
+
+
+Another element is the international context.
+In Scotland roadworks are governed by the devolved Scottish Road Works Commissioner (SRWC), who have recently taken the step of opening-up their data so it is publicly accessible [@transportscotland_raising_2018].
+With some reservations about data privacy there seemed to be overwhelming support for this policy, with one respondent to their consultation saying:
+
+> Streets are public spaces, so 
+information on how they are
+managed (even by private companies) should be publicly
+available.
+
+Unlike public transport data feeds, which are supported by GTFS, there is no internationally agreed data standard for streetworks data. 
+We hope that some of the ideas presented in this report, and the associated `roadworksUK` R package, could provide a stimulus for work in this direction:
+the UK is well-placed with some of the best national datasets and most detailed specification documents in the world.
+
+# References to add
+
+[@hussain_process_2017]
+
+[@hussain_evaluating_2016]
+
+[@kcchighways_measuring_2014]
+
+# References
