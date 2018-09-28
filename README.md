@@ -78,7 +78,15 @@ nrow(htdd_example) # a small dataset with 10 rows
 #> [1] 10
 ```
 
-## A quick example: common roadworks in Ashford
+## Example: common roadworks in Ashford
+
+This section explores roadworks `htdd_ashford`, a dataset that is
+provided by the package: it’s made available when you load
+**roadworksUK**. It relies on the **tidyverse**:
+
+``` r
+library(tidyverse)
+```
 
 A good way to ‘get the measure’ of potentially large spatio-temporal
 datasets is to find their size (in MB/GB/TB and number of rows/columns)
@@ -96,11 +104,33 @@ range(htdd_ashford$e__date_created)
 #> [1] "2018-01-31 13:35:31 UTC" "2018-07-26 09:33:05 UTC"
 ```
 
-The following commands can find-out who reports road works in Ashford,
-using the **tidyverse** package:
+A summary table of the contents of this dataset can be generated as
+follows:
 
 ``` r
-library(tidyverse)
+htdd_ashford %>% 
+  select(id, responsible_org_name, responsible_org_sector, description) %>% 
+  slice(1:10) %>% 
+  knitr::kable()
+```
+
+|       id | responsible\_org\_name | responsible\_org\_sector | description                                                                                                                                                                                                                                                |
+| -------: | :--------------------- | :----------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 38017881 | South East Water       | Water                    | CUSTOMER METER INSTALLATION                                                                                                                                                                                                                                |
+| 38017882 | KENT COUNTY COUNCIL    | Highway Authority        | COLUMN REPLACEMENT                                                                                                                                                                                                                                         |
+| 38017960 | KENT COUNTY COUNCIL    | Highway Authority        | FAO ANDY GODDEN EVEGATE MILL LANE PRE PATCHING FOR SURFACE DRESSING IN ACORDANCE WITH THE TRAFFIC SIGNS MANUAL CHAPTER 8 FROM SMALL STREAM TO CALLEYWELL LANE - FAO ANDY GODDEN EVEGATE MILL LANE PRE PATCHING FOR SURFACE DRESSING IN ACCORDANCE WITH THE |
+| 38017988 | Highways England       | Highway Authority        |                                                                                                                                                                                                                                                            |
+| 38018147 | KENT COUNTY COUNCIL    | Highway Authority        | CW Patch                                                                                                                                                                                                                                                   |
+| 38018184 | KENT COUNTY COUNCIL    | Highway Authority        | CW Potholes                                                                                                                                                                                                                                                |
+| 38018288 | KENT COUNTY COUNCIL    | Highway Authority        | Crew to take up to tip one number gully grate and demolish the existing brick-built gully.                                                                                                                                                                 |
+| 38018532 | KENT COUNTY COUNCIL    | Highway Authority        | Crew req’d to repair 2no. C/way patches located at the give way markings 1) 1.4m x 0.9m x 40mm. 2) 1.6m x 1m x 40mm.                                                                                                                                       |
+| 38018734 | South East Water       | Water                    | REPAIR COMM PIPE - CONTRACTOR DAMAGE                                                                                                                                                                                                                       |
+| 38019363 | South East Water       | Water                    | COMM PIPE REPAIR                                                                                                                                                                                                                                           |
+
+The following commands can find-out who reports road works in Ashford,
+using the **dplyr** package (part of the tidyverse):
+
+``` r
 htdd_ashford %>% 
   group_by(publisher_name) %>% 
   summarise(n = n()) %>% 
@@ -140,7 +170,7 @@ example dataset:
 plot(htdd_ashford$e__date_created, htdd_ashford$e__duration_days)
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
 
 This distribution is characteristic of roadworks data: it’s not usually
 logged when it begins but after it ends. A log of actual reporting dates
@@ -150,7 +180,7 @@ is illustrated in the next plot:
 plot(htdd_ashford$e__date_updated, htdd_ashford$e__duration_days)
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
 This shows the log comes from a single month (June) in 2018. We can do
 more sophisticated plots building on these examples and using packages
@@ -166,7 +196,7 @@ tm_basemap(server = leaflet::providers$OpenTopoMap) +
 #> Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 4.9.3
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
 
 ``` r
 library(tidyverse)

@@ -1,5 +1,5 @@
 ---
-output: github_document
+output: word_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -66,7 +66,14 @@ ncol(htdd_example)
 nrow(htdd_example) # a small dataset with 10 rows
 ```
 
-## A quick example: common roadworks in Ashford
+## Example: common roadworks in Ashford
+
+This section explores roadworks `htdd_ashford`, a dataset that is provided by the package: it's made available when you load **roadworksUK**.
+It relies on the **tidyverse**:
+
+```{r, message=FALSE}
+library(tidyverse)
+```
 
 A good way to 'get the measure' of potentially large spatio-temporal datasets is to find their size (in MB/GB/TB and number of rows/columns) and their temporal extent (we'll plot its spatial extent soon).
 We can find all of these things for the `htdd_ashford` dataset as follows:
@@ -78,11 +85,20 @@ ncol(htdd_ashford)
 range(htdd_ashford$e__date_created)
 ```
 
+A summary table of the contents of this dataset can be generated as follows:
 
-The following commands can find-out who reports road works in Ashford, using the **tidyverse** package:
+```{r}
+htdd_ashford %>% 
+  select(id, responsible_org_name, responsible_org_sector, description) %>% 
+  slice(1:10) %>% 
+  knitr::kable()
+```
+
+
+
+The following commands can find-out who reports road works in Ashford, using the **dplyr** package (part of the tidyverse):
 
 ```{r, message=FALSE}
-library(tidyverse)
 htdd_ashford %>% 
   group_by(publisher_name) %>% 
   summarise(n = n()) %>% 

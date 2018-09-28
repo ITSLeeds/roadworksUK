@@ -13,7 +13,7 @@ rw_points_to_region = function(points, regions, ncores = 1){
 
   if(is.na(st_crs(points))){
     message("No CRS for points, assuming EPSG:27700 British National Grid")
-    st_crs(points) = 27700
+    sf::st_crs(points) = 27700
   }
 
   if(ncores == 1){
