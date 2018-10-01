@@ -18,8 +18,7 @@ see base::read.csv
 }
 \examples{
 \dontrun{
-zip_file = "data/01.zip"
-d = rw_import_scot(zip_file)
+d = rw_import_scot("data/01.zip")
 ncol(d) # 74 columns
 }
 }

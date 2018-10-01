@@ -170,8 +170,7 @@ rw_import_elgin_ed = function(file_path) {
 #' @details see base::read.csv
 #'
 #' @examples \dontrun{
-#' zip_file = "data/01.zip"
-#' d = rw_import_scot(zip_file)
+#' d = rw_import_scot("data/01.zip")
 #' ncol(d) # 74 columns
 #' }
 rw_import_elgin_ttvdd = function(file_path) {
@@ -261,6 +260,8 @@ rw_import_elgin_batch = function(folder_path, method = c("ttvdd","ed","restricti
 #' Clean Spatial Part of the HDDT Data
 #'
 #' From https://downloads.srwr.scot/export
+#' @param df a data frame to clean
+#' @export
 rw_clean_points = function(df) {
   cols = c("id",
            "e__location_point_easting","e__location_point_northing",

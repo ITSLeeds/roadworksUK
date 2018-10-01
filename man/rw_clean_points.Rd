@@ -6,6 +6,9 @@
 \usage{
 rw_clean_points(df)
 }
+\arguments{
+\item{df}{a data frame to clean}
+}
 \description{
 From https://downloads.srwr.scot/export
 }

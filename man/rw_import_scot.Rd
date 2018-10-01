@@ -6,6 +6,11 @@
 \usage{
 rw_import_scot(zip_file, dest_dir = tempdir())
 }
+\arguments{
+\item{zip_file}{a .zip file to process}
+
+\item{dest_dir}{destination}
+}
 \description{
 This function imports data that has already been downloaded from
 https://downloads.srwr.scot/export

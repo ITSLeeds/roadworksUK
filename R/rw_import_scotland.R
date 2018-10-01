@@ -3,6 +3,9 @@
 #' This function imports data that has already been downloaded from
 #' https://downloads.srwr.scot/export
 #'
+#' @param zip_file a .zip file to process
+#' @param dest_dir destination
+#'
 #' @examples \dontrun{
 #' zip_file = "data/01.zip"
 #' d = rw_import_scot(zip_file)

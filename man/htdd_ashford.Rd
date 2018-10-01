@@ -34,10 +34,17 @@ summary(sel_ashford)
 htdd_ashford = eton_all[sel_ashford, ]
 nrow(htdd_ashford)
 sel_non_standard = grepl("[[:cntrl:]]",
- stringi::stri_enc_toascii(htdd_ashford$description))
+ stringi::stri_enc_toascii(htdd_ashford$e__location_description))
 summary(sel_non_standard)
+
 htdd_ashford$description =
-  iconv(htdd_ashford$description, "latin1", "ASCII", sub = "")
+  stringi::stri_trans_general(htdd_ashford$description, "latin-ascii")
+htdd_ashford$e__location_description =
+  stringi::stri_trans_general(htdd_ashford$e__location_description, "latin-ascii")
+htdd_ashford$i__permit_condition =
+  stringi::stri_trans_general(htdd_ashford$i__permit_condition, "latin-ascii")
+htdd_ashford$i__location_description =
+  stringi::stri_trans_general(htdd_ashford$i__location_description, "latin-ascii")
 }
 names(htdd_ashford)
 sapply(htdd_ashford, class)
