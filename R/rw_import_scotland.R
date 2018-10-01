@@ -10,7 +10,7 @@
 #' }
 rw_import_scot = function(zip_file, dest_dir = tempdir()) {
   spec = rw_spec_scottish()
-  unzip(zip_file, exdir = dest_dir)
+  utils::unzip(zip_file, exdir = dest_dir)
   csv_file = list.files(dest_dir, pattern = "*.csv", full.names = TRUE)
   # d = read.csv(csv_file, header = FALSE)
   d = readr::read_csv(csv_file, col_names = paste0("x", 1:74),

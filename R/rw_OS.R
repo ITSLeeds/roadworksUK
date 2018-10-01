@@ -1,5 +1,6 @@
-# Function TO Read in OS MasterMap map GML
-
+#' Function TO Read in OS MasterMap map GML
+#'
+#' This function helps read-in Ordnance Survey data
 #' @param folder character, path to folder of GML.gz file of OSMM
 #' Return a named list of SF data frames.
 #' N.B. non-spatial GML files not yet supported

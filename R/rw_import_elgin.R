@@ -28,7 +28,7 @@
 #' kent10$i__location_point[1]
 #' kent10$i__location_bng[3]
 rw_import_elgin_htdd = function(file_path) {
-  data <- read.csv(file_path, stringsAsFactors = FALSE)
+  data <- utils::read.csv(file_path, stringsAsFactors = FALSE)
 
   # data$entity_type_name = as.factor(data$entity_type_name)
   # data$publisher_name = as.factor(data$publisher_name)
@@ -90,7 +90,7 @@ rw_import_elgin_htdd = function(file_path) {
 #' ncol(d) # 74 columns
 #' }
 rw_import_elgin_restrictions = function(file_path) {
-  data <- read.csv(file_path, stringsAsFactors = FALSE)
+  data <- utils::read.csv(file_path, stringsAsFactors = FALSE)
 
   data$date_created = lubridate::dmy_hms(data$date_created)
   data$proposed_start_date = lubridate::dmy_hms(data$proposed_start_date)
@@ -129,7 +129,7 @@ rw_import_elgin_restrictions = function(file_path) {
 #' ncol(d) # 74 columns
 #' }
 rw_import_elgin_ed = function(file_path) {
-  data <- read.csv(file_path, stringsAsFactors = FALSE)
+  data <- utils::read.csv(file_path, stringsAsFactors = FALSE)
 
   data$datetimestamp = lubridate::ymd_hms(data$datetimestamp)
   data$start_date = lubridate::ymd(data$start_date)
@@ -175,7 +175,7 @@ rw_import_elgin_ed = function(file_path) {
 #' ncol(d) # 74 columns
 #' }
 rw_import_elgin_ttvdd = function(file_path) {
-  data = read.csv(file_path, stringsAsFactors = FALSE)
+  data = utils::read.csv(file_path, stringsAsFactors = FALSE)
 
   data$timestamp = lubridate::dmy_hms(data$timestamp)
 
@@ -243,9 +243,9 @@ rw_import_elgin_batch = function(folder_path, method = c("ttvdd","ed","restricti
   }else if(method %in% c("hddt")){
     results = suppressWarnings(dplyr::bind_rows(results))
     results = as.data.frame(results)
-    results$e__location_point = st_sfc(results$e__location_point)
-    results$e__location_bng = st_sfc(results$e__location_bng)
-    results$i__location_point = st_sfc(results$i__location_point)
+    results$e__location_point = sf::st_sfc(results$e__location_point)
+    results$e__location_bng = sf::st_sfc(results$e__location_bng)
+    results$i__location_point = sf::st_sfc(results$i__location_point)
     results = sf::st_sf(results)
     sf::st_crs(results) = 27700
 
@@ -268,7 +268,7 @@ rw_clean_points = function(df) {
            "e__location_bng",
            "i__location_point_easting","i__location_point_northing",
            "i__location_point_bng")
-  df.spatial = df[,cols]
+  df.spatial = df[, cols]
 
   #Pull Out each of the location types
   locs1 = sf::st_as_sf(df.spatial[,c(2,3)], coords = c("e__location_point_easting","e__location_point_northing"), crs = 27700)

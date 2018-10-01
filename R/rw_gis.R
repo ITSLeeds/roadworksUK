@@ -11,13 +11,13 @@
 #' }
 rw_points_to_region = function(points, regions, ncores = 1){
 
-  if(is.na(st_crs(points))){
+  if(is.na(sf::st_crs(points))){
     message("No CRS for points, assuming EPSG:27700 British National Grid")
     sf::st_crs(points) = 27700
   }
 
   if(ncores == 1){
-    intersects = st_intersects(points,regions)
+    intersects = sf::st_intersects(points, regions)
   }else{
     # Split into ncore groups
     ngroup = ceiling(length(points)/ncores)
@@ -27,14 +27,17 @@ rw_points_to_region = function(points, regions, ncores = 1){
     CL <- parallel::makeCluster(ncores) #make clusert and set number of core
     parallel::clusterExport(cl = CL, varlist=c("regions"), envir = environment())
     parallel::clusterEvalQ(cl = CL, {library(sf)})
-    intersects = parallel::parLapply(cl = CL,split_results,st_intersects, y = regions)
+    intersects = parallel::parLapply(cl = CL, split_results,
+                                     sf::st_intersects, y = regions)
     parallel::stopCluster(CL)
     intersects = unlist(intersects, recursive = F)
   }
 
 
   lens = lengths(intersects)
-  intersects = lapply(1:length(intersects),function(x){ifelse(lens[x]<=1,intersects[[x]],intersects[[x]][1])})
+  intersects = lapply(1:length(intersects), function(x) {
+    ifelse(lens[x] <= 1, intersects[[x]], intersects[[x]][1])
+  })
   names(intersects) = NULL
   intersects = unlist(intersects)
   ids = regions$id[intersects]

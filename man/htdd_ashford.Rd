@@ -5,13 +5,15 @@
 \alias{htdd_ashford}
 \alias{kent10}
 \alias{ashford}
+\alias{ashford_bng}
 \title{EtON roadworks data (raw HTDD logs from Elgin)}
 \format{A data frame}
 \description{
 This dataset represents eton data provided as a csv file by Elgin.
 Specifically it is a month's (June 2018) of data with almost 1000 records
 from Ashford, Kent.
-kent10 is a tidy dataset with 10 records.
+kent10 is a tiny subset of this dataset with 10 records.
+`ashford_bng` is in the British National Grid CRS.
 }
 \examples{
 \dontrun{
@@ -23,14 +25,19 @@ file.exists(file_path) # check the file is there
 eton_all = rw_import_elgin_htdd(file_path)
 ashford = osmdata::getbb("ashford uk", format_out = "sf_polygon")
 library(sf)
-plot(ashford)
 ashford_bng = st_transform(ashford, 27700)
+plot(ashford_bng)
 eton_all_sf = st_sf(eton_all$e__location_bng)
 sel_ashford = as.logical(st_intersects(eton_all_sf, ashford_bng, sparse = TRUE))
 sel_ashford[is.na(sel_ashford)] = FALSE
 summary(sel_ashford)
 htdd_ashford = eton_all[sel_ashford, ]
 nrow(htdd_ashford)
+sel_non_standard = grepl("[[:cntrl:]]",
+ stringi::stri_enc_toascii(htdd_ashford$description))
+summary(sel_non_standard)
+htdd_ashford$description =
+  iconv(htdd_ashford$description, "latin1", "ASCII", sub = "")
 }
 names(htdd_ashford)
 sapply(htdd_ashford, class)
