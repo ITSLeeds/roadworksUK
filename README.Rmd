@@ -1,6 +1,9 @@
 ---
-output: word_document
+output: github_document
 ---
+
+[![Build Status](https://travis-ci.org/ITSLeeds/roadworksUK.svg?branch=master)](https://travis-ci.org/ITSLeeds/roadworksUK)
+
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -118,14 +121,14 @@ htdd_ashford %>%
 
 Let's take a look at the temporal distribution of roadworks in the example dataset:
 
-```{r}
+```{r plottime1}
 plot(htdd_ashford$e__date_created, htdd_ashford$e__duration_days)
 ```
 
 This distribution is characteristic of roadworks data: it's not usually logged when it begins but after it ends.
 A log of actual reporting dates is illustrated in the next plot:
 
-```{r}
+```{r plottime2}
 plot(htdd_ashford$e__date_updated, htdd_ashford$e__duration_days)
 ```
 
@@ -133,7 +136,7 @@ This shows the log comes from a single month (June) in 2018.
 We can do more sophisticated plots building on these examples and using packages such as **ggplot2**.
 For now, we will move on to plot the spatial extent of the object:
 
-```{r}
+```{r tmapplot2}
 library(tmap)
 tmap_mode("view")
 tm_basemap(server = leaflet::providers$OpenTopoMap) +

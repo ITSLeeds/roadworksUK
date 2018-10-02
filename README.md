@@ -1,4 +1,7 @@
 
+[![Build
+Status](https://travis-ci.org/ITSLeeds/roadworksUK.svg?branch=master)](https://travis-ci.org/ITSLeeds/roadworksUK)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # roadworksUK
@@ -39,17 +42,18 @@ x$info[[2]]
 #>  [4] "road_stats              Road statistics for HAs"                        
 #>  [5] "rw_clean                clean roadworks data"                           
 #>  [6] "rw_clean_points         Clean Spatial Part of the HDDT Data"            
-#>  [7] "rw_import_elgin_batch   Bulk Import Elgin road works data"              
-#>  [8] "rw_import_elgin_ed      Import Elgin ED road works data"                
-#>  [9] "rw_import_elgin_htdd    Import Elgin HDDT road works data"              
-#> [10] "rw_import_elgin_restrictions"                                           
-#> [11] "                        Import Elgin Restrictions road works data"      
-#> [12] "rw_import_elgin_ttvdd   Import Elgin TTVDD road works data"             
-#> [13] "rw_import_scot          Import Scottish road works data"                
-#> [14] "rw_points_to_region     Match Points to Regions"                        
-#> [15] "rw_spatial              Convert an data frame containing roadworks data"
-#> [16] "                        into a spatial data object"                     
-#> [17] "rw_spec_scottish        Scottish road works spec"
+#>  [7] "rw_import_OSMM          Function TO Read in OS MasterMap map GML"       
+#>  [8] "rw_import_elgin_batch   Bulk Import Elgin road works data"              
+#>  [9] "rw_import_elgin_ed      Import Elgin ED road works data"                
+#> [10] "rw_import_elgin_htdd    Import Elgin HDDT road works data"              
+#> [11] "rw_import_elgin_restrictions"                                           
+#> [12] "                        Import Elgin Restrictions road works data"      
+#> [13] "rw_import_elgin_ttvdd   Import Elgin TTVDD road works data"             
+#> [14] "rw_import_scot          Import Scottish road works data"                
+#> [15] "rw_points_to_region     Match Points to Regions"                        
+#> [16] "rw_spatial              Convert an data frame containing roadworks data"
+#> [17] "                        into a spatial data object"                     
+#> [18] "rw_spec_scottish        Scottish road works spec"
 ```
 
 The datasets provided by the package include `kent10`, a minimal dataset
@@ -123,7 +127,7 @@ htdd_ashford %>%
 | 38018147 | KENT COUNTY COUNCIL    | Highway Authority        | CW Patch                                                                                                                                                                                                                                                   |
 | 38018184 | KENT COUNTY COUNCIL    | Highway Authority        | CW Potholes                                                                                                                                                                                                                                                |
 | 38018288 | KENT COUNTY COUNCIL    | Highway Authority        | Crew to take up to tip one number gully grate and demolish the existing brick-built gully.                                                                                                                                                                 |
-| 38018532 | KENT COUNTY COUNCIL    | Highway Authority        | Crew req’d to repair 2no. C/way patches located at the give way markings 1) 1.4m x 0.9m x 40mm. 2) 1.6m x 1m x 40mm.                                                                                                                                       |
+| 38018532 | KENT COUNTY COUNCIL    | Highway Authority        | Crew reqd to repair 2no. C/way patches located at the give way markings 1) 1.4m x 0.9m x 40mm. 2) 1.6m x 1m x 40mm.                                                                                                                                        |
 | 38018734 | South East Water       | Water                    | REPAIR COMM PIPE - CONTRACTOR DAMAGE                                                                                                                                                                                                                       |
 | 38019363 | South East Water       | Water                    | COMM PIPE REPAIR                                                                                                                                                                                                                                           |
 
@@ -170,7 +174,7 @@ example dataset:
 plot(htdd_ashford$e__date_created, htdd_ashford$e__duration_days)
 ```
 
-<img src="man/figures/README-unnamed-chunk-12-1.png" width="100%" />
+<img src="man/figures/README-plottime1-1.png" width="100%" />
 
 This distribution is characteristic of roadworks data: it’s not usually
 logged when it begins but after it ends. A log of actual reporting dates
@@ -180,7 +184,7 @@ is illustrated in the next plot:
 plot(htdd_ashford$e__date_updated, htdd_ashford$e__duration_days)
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="man/figures/README-plottime2-1.png" width="100%" />
 
 This shows the log comes from a single month (June) in 2018. We can do
 more sophisticated plots building on these examples and using packages
@@ -196,7 +200,7 @@ tm_basemap(server = leaflet::providers$OpenTopoMap) +
 #> Linking to GEOS 3.6.2, GDAL 2.2.3, proj.4 4.9.3
 ```
 
-<img src="man/figures/README-unnamed-chunk-14-1.png" width="100%" />
+<img src="man/figures/README-tmapplot2-1.png" width="100%" />
 
 ``` r
 library(tidyverse)
