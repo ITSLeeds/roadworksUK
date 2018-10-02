@@ -3,9 +3,10 @@ Type: Package
 Title: Accessing Processing and Visualising Data on UK Roadworks
 Version: 0.1.1
 Authors@R: c(
-    person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("cre"),
+    person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("cre", "aut"),
     comment = c(ORCID = "0000-0001-5679-6536")),
-    person("Malcolm", "Morgan", role = c("ctb"))
+    person("Malcolm", "Morgan", role = c("aut")),
+    person("RAC Foundation", role = c("fnd"))
     )
 Maintainer: Robin Lovelace <rob00x@gmail.com>
 Description: The goal of roadworksUK is to enable you to access, process and visualise data on UK roadworks,
