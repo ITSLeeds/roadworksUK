@@ -7,7 +7,7 @@ Authors@R: c(
     comment = c(ORCID = "0000-0001-5679-6536")),
     person("Malcolm", "Morgan", role = c("ctb"))
     )
-Maintainer: The package maintainer <rob00x@gmail.com>
+Maintainer: Robin Lovelace <rob00x@gmail.com>
 Description: The goal of roadworksUK is to enable you to access, process and visualise data on UK roadworks,
   particularly Electronic Transfer of Notifications (EToN) records.
 License: GPL-3
