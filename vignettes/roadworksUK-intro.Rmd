@@ -6,7 +6,7 @@ output: rmarkdown::html_vignette
 # output: rmarkdown::word_document
 bibliography: references.bib
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Introducing roadworksUK}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -18,46 +18,50 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Glossary
+<!-- # Glossary -->
 
-- Fixed Penalty Notice (FPN):
-- New Roads and Street Works Act 1991 ([NRSWA](http://www.legislation.gov.uk/ukpga/1991/22/contents)): Legislation empowering LHAs to inspect the work of undertakers that impact public roads.
-<!-- todo: check -->
-- Reactive vs collaborative: reactive projects are ones that are unplanned, collaborative projects are planned. There is also a question of timescales of fixing - urgent or standard and major activities. Urgent activities have the greatest impact
-- Roadworks:
-- Streetworks: 
-- Traffic Management type (TM type): how the LHA manages traffic around road works, including traffic lights
-- Undertaker: The entity undertaking the roadworks
+<!-- - Fixed Penalty Notice (FPN): -->
+<!-- - New Roads and Street Works Act 1991 ([NRSWA](http://www.legislation.gov.uk/ukpga/1991/22/contents)): Legislation empowering LHAs to inspect the work of undertakers that impact public roads. -->
+<!-- <!-- todo: check --> 
+<!-- - Reactive vs collaborative: reactive projects are ones that are unplanned, collaborative projects are planned. There is also a question of timescales of fixing - urgent or standard and major activities. Urgent activities have the greatest impact -->
+<!-- - Roadworks: -->
+<!-- - Streetworks:  -->
+<!-- - Traffic Management type (TM type): how the LHA manages traffic around road works, including traffic lights -->
+<!-- - Undertaker: The entity undertaking the roadworks -->
 
 
 
 # Introduction
 
-Roadworks and streetworks (which we collectively refer to as roadworks for simplicity in this report, see glossary) are an understudied yet vital part of the transport system.
-Without them roads and associated pavements and other structures would gradually fall into a state of disrepair damaging to all road users.
-Although only a small fraction of roadworks are for road users,
-<!-- (xx% as revealed subseqently in the report) -->
-it is worth seeing the evidence of the disruption they cause in the wider context of the need for work to be done to keep transport and other key systems working for the benefit of all in society.
+<!-- Roadworks and streetworks (which we collectively refer to as roadworks for simplicity in this report, see glossary) are an understudied yet vital part of the transport system. -->
+<!-- Without them roads and associated pavements and other structures would gradually fall into a state of disrepair damaging to all road users. -->
+<!-- Although only a small fraction of roadworks are for road users, -->
+<!-- <!-- (xx% as revealed subseqently in the report) --> 
+<!-- it is worth seeing the evidence of the disruption they cause in the wider context of the need for work to be done to keep transport and other key systems working for the benefit of all in society. -->
 
-Lane rental has been in operation since 2013 in London and Kent
+<!-- Lane rental has been in operation since 2013 in London and Kent -->
 
-A government commissioned report evaluated the effectiveness of permit schemes which found that "LHAs with permit schemes reported that they have increased control of the road network" [@ecorys_evaluation_2017].
+<!-- A government commissioned report evaluated the effectiveness of permit schemes which found that "LHAs with permit schemes reported that they have increased control of the road network" [@ecorys_evaluation_2017]. -->
 
 
 
-Three levels of regulation:
+<!-- Three levels of regulation: -->
 
-- Noticing: This is a statutary requirement that demands undertakers to inform the LHA that works will be undertaken.
-- Permiting
-- Lane rental: provides an additional layer of control, so far only implemented in London and Kent and only affecting a small fraction (~5% by length) of roads by length.
+<!-- - Noticing: This is a statutary requirement that demands undertakers to inform the LHA that works will be undertaken. -->
+<!-- - Permiting -->
+<!-- - Lane rental: provides an additional layer of control, so far only implemented in London and Kent and only affecting a small fraction (~5% by length) of roads by length. -->
+
+This vignette provides a brief introduction to the **roadworksUK** package, building on the content in the package's README.
 
 # Input roadworks data
 
-The EtON specification is set-out in [@highwayauthoritiesandutilitiescommittee_technical_2013].
-The specification is clear but there are many ways to interpret it and there seems to be no standard file format for exchanging data at the level of individual roadworks, the starting point for many roadworks analysis projects.
+The EtON specification is set-out in @highwayauthoritiesandutilitiescommittee_technical_2013.
+The specification is clear but there are many ways to interpret it and there is little in the way of standardisation.
+File format for exchanging data vary, even at the level of individual roadworks, the starting point for many roadworks analysis projects.
 
-An example of this type of data is provided in `htdd_ashford`, a dataset representing all roadworks in Leeds in the 4^th^ quarter of 2017.
-As illustrated in the code chunk below it contains 16,000 rows and 24 columns, and is available when the package is loaded:
+Roadworks data used in this package were provided by Elgin.
+An example is `htdd_ashford`, a dataset representing all roadworks in Ashford in the in June quarter of 2018.
+Its dimensions and column names are queried below:
 
 ```{r}
 library(roadworksUK)
@@ -66,10 +70,36 @@ ncol(htdd_ashford)
 names(htdd_ashford)
 ```
 
+# Aggregation of roadworks data
 
-# Descriptive analysis of roadworks data
+Roadworks data do not plot spatially by defualt.
+The **sf** package needs to be loaded and spatial columns need to be specified.
+The spatial columns can be identified as follows:
 
-# Road traffic data
+```{r}
+cols_sf = names(htdd_ashford)[sapply(htdd_ashford, is, "sfc")]
+cols_sf
+```
+
+Any of these can be plotted in geographic space as follows:
+
+
+```{r}
+library(sf)
+plot(htdd_ashford$e__location_point)
+```
+
+<!-- These have the following geometry types: -->
+
+```{r, echo=FALSE}
+# st_geometry_type(htdd_ashford[[cols_sf[1]]])
+# sapply(cols_sf, function(x) summary(st_geometry_type(htdd_ashford[[x]])))
+```
+
+
+
+
+<!-- # Road traffic data -->
 
 # Discussion and next steps
 
@@ -91,12 +121,12 @@ Unlike public transport data feeds, which are supported by GTFS, there is no int
 We hope that some of the ideas presented in this report, and the associated `roadworksUK` R package, could provide a stimulus for work in this direction:
 the UK is well-placed with some of the best national datasets and most detailed specification documents in the world.
 
-# References to add
+<!-- # References to add -->
 
-[@hussain_process_2017]
+<!-- [@hussain_process_2017] -->
 
-[@hussain_evaluating_2016]
+<!-- [@hussain_evaluating_2016] -->
 
-[@kcchighways_measuring_2014]
+<!-- [@kcchighways_measuring_2014] -->
 
 # References
