@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # roadworksUK
 
-The goal of roadworksUK is to enable you to access, process and visualis data on UK roadworks, particularly Electronic Transfer of Notifications (EToN) records.
+The goal of roadworksUK is to enable you to access, process and visualise data on UK roadworks, particularly Electronic Transfer of Notifications (EToN) records.
 
 ## Installation
 
@@ -108,7 +108,7 @@ htdd_ashford %>%
   arrange(desc(n))
 ```
 
-It's mostly Kenty County Council. There are a handful of reports by HE in the region also.
+It's mostly Kent County Council. There are a handful of reports by HE in the region also.
 Find out who does the work with the following commands (this finds the top 5 organisations, change then `n` parameter to see more organisations):
 
 ```{r}

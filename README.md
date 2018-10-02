@@ -6,9 +6,9 @@ Status](https://travis-ci.org/ITSLeeds/roadworksUK.svg?branch=master)](https://t
 
 # roadworksUK
 
-The goal of roadworksUK is to enable you to access, process and visualis
-data on UK roadworks, particularly Electronic Transfer of Notifications
-(EToN)
+The goal of roadworksUK is to enable you to access, process and
+visualise data on UK roadworks, particularly Electronic Transfer of
+Notifications (EToN)
 records.
 
 ## Installation
@@ -146,10 +146,10 @@ htdd_ashford %>%
 #> 2 Highways England        6
 ```
 
-It’s mostly Kenty County Council. There are a handful of reports by HE
-in the region also. Find out who does the work with the following
-commands (this finds the top 5 organisations, change then `n` parameter
-to see more organisations):
+It’s mostly Kent County Council. There are a handful of reports by HE in
+the region also. Find out who does the work with the following commands
+(this finds the top 5 organisations, change then `n` parameter to see
+more organisations):
 
 ``` r
 htdd_ashford %>% 
