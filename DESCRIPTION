@@ -1,7 +1,7 @@
 Package: roadworksUK
 Type: Package
 Title: Accessing Processing and Visualising Data on UK Roadworks
-Version: 0.1.0.9000
+Version: 0.1.1
 Authors@R: c(
     person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("cre"),
     comment = c(ORCID = "0000-0001-5679-6536")),
