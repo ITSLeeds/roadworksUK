@@ -4,16 +4,29 @@
 #' htdd, enquires, restrictions or ttvdd.
 #'
 #' @export
-#' @example
+#' @examples
 #' \dontrun{
 #' rw_spec()
-#' rw_spec(spec_urls[1])
+#' rw_spec("restrictions")
 #' }
-#'
 rw_spec = function(spec_type = c("htdd", "enquires", "restrictions", "ttvdd")) {
-  u = grepl(pattern = spec_type, spec_urls)
+  spec_type = match.arg(spec_type)
+  u = rw_spec_url(spec_type)
   d = file.path(tempdir(), paste0(spec_type, ".pdf"))
   message("Downloading specification file from:\n", u, "to:\n", d)
-  download.file(u, d)
-  browseURL(d)
+  utils::download.file(u, d)
+  utils::browseURL(d)
+}
+#' @examples
+#' rw_spec_url()
+rw_spec_url = function(spec_type = "htdd") {
+  u_specs = c(
+    "https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/20180924_Elgin.Enquires.Dataset.spec.v1.0.pdf",
+    "https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/20180924_Elgin.Restrictions.Dataset.spec.v1.0.pdf",
+    "https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/20180925_Elgin.HTDD.Specification.v1.0.pdf",
+    "https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/20180927_Elgin.TTVDD.spec.v1.0.pdf"
+  )
+  u_specs[grepl(pattern = spec_type,
+                  x = u_specs,
+                  ignore.case = TRUE)]
 }

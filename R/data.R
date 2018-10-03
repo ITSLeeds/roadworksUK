@@ -106,3 +106,21 @@ NULL
 #' summary(road_stats$name %in% highway_authorities$name)
 #' road_stats
 NULL
+
+#' URLs pointing to roadworks data spec from Elgin
+#'
+#' @docType data
+#' @keywords datasets
+#' @name spec_urls
+#' @format Character vector
+#' @examples \dontrun{
+#' f = list.files(pattern = "pdf")
+#' piggyback::pb_upload(f)
+#' u = piggyback::pb_download_url()
+#' spec_urls = u[grepl(pattern = "Elgin", x = u)]
+#' road_stats = readRDS("data/HA_RoadStats.Rds")
+#' usethis::use_data(road_stats)
+#' }
+#' spec_urls
+#' spec_urls[grepl("HTDD", spec_urls)]
+NULL
