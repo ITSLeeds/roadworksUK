@@ -130,3 +130,9 @@ the UK is well-placed with some of the best national datasets and most detailed 
 <!-- [@kcchighways_measuring_2014] -->
 
 # References
+
+```{r, eval=FALSE, echo=FALSE}
+f = list.files(pattern = "png")
+piggyback::pb_upload(f)
+```
+
