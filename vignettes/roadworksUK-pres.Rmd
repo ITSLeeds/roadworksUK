@@ -1,8 +1,9 @@
 ---
 title: "Digging in the street"
 subtitle: "🚧<br/>tools and analysis to unleash roadworks data"
-author: "Robin Lovelace"
-date: "2018-11-01 (updated: `r Sys.Date()`)"
+author: "Robin Lovelace and Malcolm Morgan, ITS Leeds"
+date: "RAC Foundation, London, 2018-11-01"
+# logo
 output:
   xaringan::moon_reader:
     nature:
@@ -12,7 +13,8 @@ output:
 ---
 
 ```{r, echo=FALSE, eval=FALSE}
-f = list.files(path = "vignettes", pattern = "pres", full.names = T)
+wd_old = setwd("/tmp/RtmpGIYQVR/preview-3c454d5ed18.dir/")
+f = list.files(pattern = "pres", full.names = T)
 zip(zipfile = "/tmp/pres-start.zip", files = f)
 ```
 
@@ -71,82 +73,82 @@ knitr::include_graphics("https://www.kentonline.co.uk/_media/img/JSUI48FJ0UR7J24
 
 ### We use roadworks to refer to all disruptions on the road network
 
----
+<!-- --- -->
 
-# National overview
+<!-- # National overview -->
 
-.pull-left[
+<!-- .pull-left[ -->
 
-```{r, out.width="90%"}
-knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-5a.png")
-```
+<!-- ```{r, out.width="90%"} -->
+<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-5a.png") -->
+<!-- ``` -->
 
-]
+<!-- ] -->
 
---
+<!-- -- -->
 
-.pull-right[
+<!-- .pull-right[ -->
 
-```{r, out.width="90%"}
-knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-5b.png")
-```
+<!-- ```{r, out.width="90%"} -->
+<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-5b.png") -->
+<!-- ``` -->
 
-]
+<!-- ] -->
 
-???
-- Total number of roadworks of all types recorded by authority (left), and number of roadworks recorded per kilometre of roads (right) 
+<!-- ??? -->
+<!-- - Total number of roadworks of all types recorded by authority (left), and number of roadworks recorded per kilometre of roads (right)  -->
 
----
+<!-- --- -->
 
-# Impacts
+<!-- # Impacts -->
 
-.pull-left[
+<!-- .pull-left[ -->
 
-```{r, out.width="90%"}
-knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-11.png")
-```
+<!-- ```{r, out.width="90%"} -->
+<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-11.png") -->
+<!-- ``` -->
 
-]
+<!-- ] -->
 
---
+<!-- -- -->
 
-.pull-right[
-
-
-- Percentage of roadworks self-reported reported as having severe or high impact from January 2016 to July 2018
-
-- Differences influenced by reporting conventions
-
-]
-
----
-
-# Restrictions
-
-.pull-left[
-
-```{r, out.width="90%"}
-knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig3-1.png")
-```
-
-]
-
---
-
-.pull-right[
-
-- Section58 Restrictions (New Roads and Street Works Act 1991) place a temporary ban on planned roadworks in a specific street or area.
-
-- High geographical variability in uptake
-
-- Some 'early adopters'
-
-- Restrictions not reported in some areas
-
-- Others (Shropshire and Sheffield for example) have issued over a 1,000 new restrictions in 18 months to 1 July 2018
+<!-- .pull-right[ -->
 
 
-]
+<!-- - Percentage of roadworks self-reported reported as having severe or high impact from January 2016 to July 2018 -->
+
+<!-- - Differences influenced by reporting conventions -->
+
+<!-- ] -->
+
+<!-- --- -->
+
+<!-- # Restrictions -->
+
+<!-- .pull-left[ -->
+
+<!-- ```{r, out.width="90%"} -->
+<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig3-1.png") -->
+<!-- ``` -->
+
+<!-- ] -->
+
+<!-- -- -->
+
+<!-- .pull-right[ -->
+
+<!-- - Section58 Restrictions (New Roads and Street Works Act 1991) place a temporary ban on planned roadworks in a specific street or area. -->
+
+<!-- - High geographical variability in uptake -->
+
+<!-- - Some 'early adopters' -->
+
+<!-- - Restrictions not reported in some areas -->
+
+<!-- - Others (Shropshire and Sheffield for example) have issued over a 1,000 new restrictions in 18 months to 1 July 2018 -->
+
+
+<!-- ] -->
 
 ---
 
@@ -161,10 +163,12 @@ knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/downlo
 
 ```{r, eval=FALSE, echo=TRUE}
 install.packages("devtools")
-devtools::install_github("ITSLeeds/roadworksUK")
+library(devtools)
+pkg = "ITSLeeds/roadworksUK"
+install_github(pkg)
 ```
 
-- Bad news: it's a *programming language*
+- R is a *programming language*
 
 ]
 
