@@ -42,10 +42,14 @@ barplot(table(htdd_ashford$responsible_org_sector))
 # make a map of just water-related roadworks
 
 # ggplot2
-
+ggplot(roadworks) +
+  geom_bar(aes(responsible_org_sector))
 
 # ggplot2 with theme
-
+ggplot(roadworks) +
+  geom_bar(aes(responsible_org_sector, fill = responsible_org_sector)) +
+  theme_bw() +
+  theme(axis.text.x = element_blank())
 
 # analysis ----------------------------------------------------------------
 
