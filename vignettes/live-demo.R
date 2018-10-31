@@ -76,4 +76,5 @@ roadworks_sector = roadworks %>%
   group_by(responsible_org_sector) %>%
   summarise(duration = median(duration))
 ggplot(roadworks_sector) +
-  geom_bar(aes(responsible_org_sector, duration), stat = "identity")
+  geom_bar(aes(responsible_org_sector, duration), stat = "identity") +
+  ylab("Duration (days)")

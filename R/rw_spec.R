@@ -1,8 +1,11 @@
-#' View specification documents associated with data provided by Elgin
+#' View specification documents
+#'
+#' This function downloads and opens pdf documents containing the specifications
+#' associated with data on streetworks provided by Elgin
 #'
 #' @param spec_type the type of specification document, one of:
 #' htdd, enquires, restrictions or ttvdd.
-#'
+#' @aliases rw_spec_url
 #' @export
 #' @examples
 #' \dontrun{
@@ -17,8 +20,9 @@ rw_spec = function(spec_type = c("htdd", "enquires", "restrictions", "ttvdd")) {
   utils::download.file(u, d)
   utils::browseURL(d)
 }
+#' @rdname rw_spec
 #' @examples
-#' rw_spec_url()
+#' # rw_spec_url()
 rw_spec_url = function(spec_type = "htdd") {
   u_specs = c(
     "https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/20180924_Elgin.Enquires.Dataset.spec.v1.0.pdf",
