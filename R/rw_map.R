@@ -4,6 +4,7 @@
 #'
 #' @param x A dataset containing htdd data object created with [rw_import_elgin_htdd()]
 #' @param vars A text string of variables to be show, one facet for each
+#' @param key.width The width of the key, `6` by default
 #' @param ... Arguments passed to `plot()`
 #'
 #' @export
