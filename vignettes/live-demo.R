@@ -21,15 +21,15 @@ library(tmap)
 ttm()
 
 names(htdd_ashford)
-summary(ht)
 roadworks = sf::st_sf(htdd_ashford$i__location_point, htdd_ashford) %>%
   select(id, responsible_org_name, responsible_org_sector, e__date_created, e__start_date,
-         e__end_date)
+         e__end_date, i__location_point)
 roadworks = roadworks %>%
   filter(e__start_date >= "2018-06-01")
 
 # making a map ------------------------------------------------------------
 
+rw_map(roadworks)
 qtm(roadworks)
 tm_basemap(server = leaflet::providers$OpenTopoMap) +
   qtm(htdd_ashford$i__location_point)

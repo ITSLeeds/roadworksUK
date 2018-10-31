@@ -4,12 +4,14 @@
 \alias{rw_map}
 \title{Create a static map of htdd data}
 \usage{
-rw_map(x, vars = c("responsible_org_sector", "i__start_date"))
+rw_map(x, vars = c("responsible_org_sector"), key.width = 4, ...)
 }
 \arguments{
 \item{x}{A dataset containing htdd data object created with [rw_import_elgin_htdd()]}
 
 \item{vars}{A text string of variables to be show, one facet for each}
+
+\item{...}{Arguments passed to `plot()`}
 }
 \description{
 This function creates a simple static map of roadworks data, for one or more variables.

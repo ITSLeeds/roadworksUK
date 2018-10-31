@@ -4,11 +4,12 @@
 #'
 #' @param x A dataset containing htdd data object created with [rw_import_elgin_htdd()]
 #' @param vars A text string of variables to be show, one facet for each
+#' @param ... Arguments passed to `plot()`
 #'
 #' @export
 #' @examples
-#' rw_map(htdd_ashford)
-rw_map = function(x, vars = c("responsible_org_sector", "i__start_date")) {
-  x_sf =  sf::st_sf(x$i__location_point, x)
-  graphics::plot(x_sf[vars])
+#' rw_map(htdd_ashford[1:100, ])
+rw_map = function(x, vars = c("responsible_org_sector"), key.width = 6, ...) {
+  x_sf =  sf::st_sf(x, sf_column_name = "i__location_point")
+  graphics::plot(x_sf[vars], key.width = graphics::lcm(key.width), ...)
 }
