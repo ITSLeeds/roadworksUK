@@ -20,33 +20,6 @@ Install the package hosted on [GitHub](https://github.com/) with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("ITSLeeds/roadworksUK")
-#> 
-#>   
-   checking for file ‘/tmp/RtmpOL4iap/remotes3b543773bc57/ITSLeeds-roadworksUK-b7f06cc/DESCRIPTION’ ...
-  
-✔  checking for file ‘/tmp/RtmpOL4iap/remotes3b543773bc57/ITSLeeds-roadworksUK-b7f06cc/DESCRIPTION’
-#> 
-  
-─  preparing ‘roadworksUK’:
-#> 
-  
-   checking DESCRIPTION meta-information ...
-  
-✔  checking DESCRIPTION meta-information
-#> 
-  
-─  checking for LF line-endings in source and make files and shell scripts
-#> 
-  
-─  checking for empty or unneeded directories
-#> ─  looking to see if a ‘data/datalist’ file should be added
-#> 
-  
-─  building ‘roadworksUK_0.1.1.tar.gz’
-#> 
-  
-   
-#> 
 ```
 
 Load the package with:
@@ -77,11 +50,12 @@ x$info[[2]]
 #> [12] "                        Import Elgin Restrictions road works data"      
 #> [13] "rw_import_elgin_ttvdd   Import Elgin TTVDD road works data"             
 #> [14] "rw_import_scot          Import Scottish road works data"                
-#> [15] "rw_points_to_region     Match Points to Regions"                        
-#> [16] "rw_spec                 View specification documents associated with"   
-#> [17] "                        data provided by Elgin"                         
-#> [18] "rw_spec_scottish        Scottish road works spec"                       
-#> [19] "spec_urls               URLs pointing to roadworks data spec from Elgin"
+#> [15] "rw_map                  Create a static map of htdd data"               
+#> [16] "rw_map_interactive      Create an interactive map of htdd data"         
+#> [17] "rw_points_to_region     Match Points to Regions"                        
+#> [18] "rw_spec                 View specification documents"                   
+#> [19] "rw_spec_scottish        Scottish road works spec"                       
+#> [20] "spec_urls               URLs pointing to roadworks data spec from Elgin"
 ```
 
 The datasets provided by the package include `kent10`, a minimal dataset
