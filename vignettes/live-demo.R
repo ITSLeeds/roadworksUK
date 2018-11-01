@@ -35,6 +35,7 @@ tm_basemap(server = leaflet::providers$OpenTopoMap) +
 # visualisation is nice but the strength of R is analysis
 # Let's calculated the duration in days of roadworks:
 roadworks$duration = difftime(roadworks$e__end_date, roadworks$e__start_date, units = "days")
+roadworks$duration = as.numeric(roadworks$duration)
 mean(roadworks$duration)
 
 library(sf)
@@ -101,3 +102,20 @@ ggplot(roadworks_sector) +
   geom_bar(aes(responsible_org_sector, duration), stat = "identity") +
   ylab("Duration (days)")
 
+library(mapdeck)
+key = Sys.getenv("MAPBOX")
+?mapdeck_tokens()
+set_token(key)
+roadworks_wgs = st_transform(roadworks, 4326)
+
+mapdeck(
+  location = c(0.8, 51),
+  zoom = 6,
+  pitch = 30
+) %>%
+  add_grid(
+    data = roadworks_wgs,
+    layer_id = "grid_layer",
+    cell_size = 2000,
+    elevation_scale = 50
+  )
