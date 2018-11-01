@@ -13,12 +13,10 @@ install.packages("tidyverse")
 # installing roadworks
 devtools::install_github("ITSLeeds/roadworkUK")
 
-library(ggplot2)
-library(roadworksUK)
-
 library(tidyverse)
+library(roadworksUK)
 library(tmap)
-ttm()
+tmap_mode("view")
 
 names(htdd_ashford)
 roadworks = sf::st_sf(htdd_ashford$i__location_point, htdd_ashford) %>%
@@ -31,8 +29,30 @@ roadworks = roadworks %>%
 
 rw_map(roadworks)
 qtm(roadworks)
+rw_map_interactive(roadworks)
 tm_basemap(server = leaflet::providers$OpenTopoMap) +
   qtm(htdd_ashford$i__location_point)
+
+# visualisation is nice but the strength of R is analysis
+# Let's calculated the duration in days of roadworks:
+roadworks$duration = difftime(roadworks$e__end_date, roadworks$e__start_date, units = "days")
+mean(roadworks$duration)
+
+library(sf)
+plot(msoa_ashford$geom)
+plot(roadworks, add = T)
+
+# let's find out how many roadworks take place in each part of ashford:
+msoa_total = aggregate(x = roadworks[1], by = msoa_ashford, FUN = length)
+plot(msoa_total, main = "N. roadworks in Ashford, June 2018")
+
+# Focussing on a single sector:
+sum(roadworks$responsible_org_sector == "Water")
+
+roadworks_water = roadworks %>%
+  filter(responsible_org_sector == "Water")
+msoa_water = aggregate(roadworks_water["duration"], msoa_ashford, FUN = mean)
+plot(msoa_water, main = "Average waterwork duration (days)")
 
 # describing the data -----------------------------------------------------
 
@@ -74,7 +94,6 @@ ggplot(roadworks_week) +
   geom_line(aes(week, n, color = sector))
 
 # length of time by org
-roadworks$duration = difftime(roadworks$e__end_date, roadworks$e__start_date, units = "days")
 summary(roadworks$duration)
 roadworks_sector = roadworks %>%
   group_by(responsible_org_sector) %>%
@@ -82,3 +101,4 @@ roadworks_sector = roadworks %>%
 ggplot(roadworks_sector) +
   geom_bar(aes(responsible_org_sector, duration), stat = "identity") +
   ylab("Duration (days)")
+

@@ -25,4 +25,5 @@ Imports:
     lubridate,
     dplyr,
     readr,
-    parallel
+    parallel,
+    magrittr
