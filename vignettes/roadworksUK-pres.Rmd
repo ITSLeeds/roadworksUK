@@ -44,6 +44,39 @@ class: center, bottom, inverse
 This shows us 3 things about road works: ubiquity (caused by fact roads are used for lots more than transport); impact on road users; and wider impacts.
 ---
 
+# The value of visualisation/analyisis
+
+.pull-left[
+
+- It's great to have data
+
+- But it can only be used if it can be understood
+
+- And that involves visualisation
+
+- E.g. 1: Popensity to Cycle Tool: http://www.pct.bike/
+
+- E.g. 2: 'geoplumber': http://www.geoplumber.com/deck
+
+]
+
+--
+
+.pull-right[
+
+```{r}
+knitr::include_graphics("https://raw.githubusercontent.com/npct/pct-team/master/figures/haystack.png")
+knitr::include_graphics("https://raw.githubusercontent.com/npct/pct-team/master/figures/leed-bradford-lsoa-dutch.png")
+```
+
+```{r}
+
+```
+
+]
+
+---
+
 # Road works vs street works
 
 
@@ -73,86 +106,11 @@ knitr::include_graphics("https://www.kentonline.co.uk/_media/img/JSUI48FJ0UR7J24
 
 ### We use roadworks to refer to all disruptions on the road network
 
-<!-- --- -->
-
-<!-- # National overview -->
-
-<!-- .pull-left[ -->
-
-<!-- ```{r, out.width="90%"} -->
-<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-5a.png") -->
-<!-- ``` -->
-
-<!-- ] -->
-
-<!-- -- -->
-
-<!-- .pull-right[ -->
-
-<!-- ```{r, out.width="90%"} -->
-<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-5b.png") -->
-<!-- ``` -->
-
-<!-- ] -->
-
-<!-- ??? -->
-<!-- - Total number of roadworks of all types recorded by authority (left), and number of roadworks recorded per kilometre of roads (right)  -->
-
-<!-- --- -->
-
-<!-- # Impacts -->
-
-<!-- .pull-left[ -->
-
-<!-- ```{r, out.width="90%"} -->
-<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig4-11.png") -->
-<!-- ``` -->
-
-<!-- ] -->
-
-<!-- -- -->
-
-<!-- .pull-right[ -->
-
-
-<!-- - Percentage of roadworks self-reported reported as having severe or high impact from January 2016 to July 2018 -->
-
-<!-- - Differences influenced by reporting conventions -->
-
-<!-- ] -->
-
-<!-- --- -->
-
-<!-- # Restrictions -->
-
-<!-- .pull-left[ -->
-
-<!-- ```{r, out.width="90%"} -->
-<!-- knitr::include_graphics("https://github.com/ITSLeeds/roadworksUK/releases/download/0.2/Fig3-1.png") -->
-<!-- ``` -->
-
-<!-- ] -->
-
-<!-- -- -->
-
-<!-- .pull-right[ -->
-
-<!-- - Section58 Restrictions (New Roads and Street Works Act 1991) place a temporary ban on planned roadworks in a specific street or area. -->
-
-<!-- - High geographical variability in uptake -->
-
-<!-- - Some 'early adopters' -->
-
-<!-- - Restrictions not reported in some areas -->
-
-<!-- - Others (Shropshire and Sheffield for example) have issued over a 1,000 new restrictions in 18 months to 1 July 2018 -->
-
-
-<!-- ] -->
-
 ---
 
 # Live demo
+
+## But first: what we did + what's possible
 
 .pull-left[
 
@@ -188,6 +146,8 @@ install_github(pkg)
 class: center, middle
 
 # Thanks!
+
+Many thanks to Elgin for providing the data and RAC Foundation for funding the project.
 
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
 

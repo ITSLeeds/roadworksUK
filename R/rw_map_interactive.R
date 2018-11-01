@@ -12,8 +12,8 @@
 rw_map_interactive = function(x, vars = names(x), ...) {
   # should split-out as data object
   if(length(vars) > 10) {
-    vars = c("id", "responsible_org_name", "responsible_org_sector", "e__date_created",
-             "e__start_date", "e__end_date", "i__location_point")
+    vars = vars[ vars %in% c("id", "responsible_org_name", "responsible_org_sector", "e__date_created",
+             "e__start_date", "e__end_date")]
   }
   x_df = x[vars]
   x_sf =  sf::st_sf(x_df, geometry = sf::st_sfc(x$i__location_point, crs = 27700))
@@ -24,6 +24,7 @@ rw_map_interactive = function(x, vars = names(x), ...) {
     ic_text[x_df$responsible_org_sector == "Water"] = emojifont::emoji("potable_water")
     ic_text[x_df$responsible_org_sector == "Electricity"] = emojifont::emoji("electric_plug")
     ic_text[x_df$responsible_org_sector == "Rail"] = emojifont::emoji("bullettrain_side")
+    ic_text[x_df$responsible_org_sector == "Gas"] = emojifont::emoji("fire")
   }
 
   ic = leaflet::makeAwesomeIcon(text = ic_text)
