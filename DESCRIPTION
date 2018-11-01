@@ -26,4 +26,6 @@ Imports:
     dplyr,
     readr,
     parallel,
-    magrittr
+    magrittr,
+    leaflet,
+    emojifont
