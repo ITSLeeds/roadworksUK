@@ -3,19 +3,19 @@
 # set-up ------------------------------------------------------------------
 
 # RStudio
+# ... describe it
 
-# packages
-
+# install packages
 install.packages("devtools")
 install.packages("tidyverse")
 
 # installing roadworks
 devtools::install_github("ITSLeeds/roadworksUK")
 
-library(tidyverse)
-library(roadworksUK)
-library(tmap)
-tmap_mode("view")
+# load packages
+library(tidyverse)    # the data science kitchen sink
+library(tmap)         # for making maps
+library(roadworksUK)  # our pkg
 
 names(htdd_ashford)
 roadworks = sf::st_sf(htdd_ashford$i__location_point, htdd_ashford) %>%
