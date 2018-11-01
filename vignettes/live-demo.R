@@ -11,7 +11,7 @@ install.packages("devtools")
 install.packages("tidyverse")
 
 # installing roadworks
-devtools::install_github("ITSLeeds/roadworkUK")
+devtools::install_github("ITSLeeds/roadworksUK")
 
 library(ggplot2)
 library(roadworksUK)
